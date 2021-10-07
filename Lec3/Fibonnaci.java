@@ -1,0 +1,25 @@
+package Lec3;
+
+public class Fibonnaci {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int n = 7;
+		int a = 0;
+		int b = 1;
+		
+		int i = 1;
+		while(i <= n)
+		{
+			int c = a+b;
+			a = b;
+			b = c;
+			
+			i++;
+		}
+		System.out.println("Nth fib: "+ a);
+
+	}
+
+}
