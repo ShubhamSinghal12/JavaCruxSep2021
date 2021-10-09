@@ -27,6 +27,7 @@ public class Pattern14 {
 				nsp++;
 				nst--;
 			}
+			
 			System.out.println();
 			row++;
 		}
