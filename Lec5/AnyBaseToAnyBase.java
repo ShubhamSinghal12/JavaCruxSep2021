@@ -29,6 +29,7 @@ public class AnyBaseToAnyBase {
 		}
 		return dn;
 	}
+	
 	public static int decimalToany(int n, int base)
 	{
 		int bn = 0;
