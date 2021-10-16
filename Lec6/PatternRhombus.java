@@ -1,11 +1,13 @@
 package Lec6;
 
+import java.util.Scanner;
+
 public class PatternRhombus {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		int n = 3;
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
 		
 		int row = 1;
 		int nst = 1;
