@@ -27,6 +27,7 @@ public class SubSequences {
 				ans.add(rr.get(i));
 				ans.add(cu+rr.get(i));
 			}
+			
 			return ans;
 		}
 	}
