@@ -4,7 +4,15 @@ public class Permutations {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		tpm("aba","");
+//		tpm("aba","");
+		String s = "aba";
+		int[] freq = new int[26];
+		for(int i = 0; i < s.length(); i++)
+		{
+			freq[s.charAt(i)-'a']++;
+		}
+		System.out.println(tpmFreq(freq, ""));
+		
 
 	}
 	
@@ -50,6 +58,10 @@ public class Permutations {
 		}
 		else
 		{
+			if(ans.length() != 0)
+			{
+				System.out.println(ans);
+			}
 			for(int i = 0; i < ques.length(); i++)
 			{
 				boolean flag = true;
@@ -72,6 +84,28 @@ public class Permutations {
 	}
 	
 	
+	public static int tpmFreq(int[] freq,String ans)
+	{
+		int c = 0;
+		if(ans.length() != 0)
+		{
+			System.out.println(ans);
+			c = 1;
+		}
+		
+		for(int i = 0; i < 26; i++) {
+			if(freq[i] > 0)
+			{
+				freq[i]--;
+				c += tpmFreq(freq, ans+(char)(i+'a'));
+				freq[i]++;
+				
+			}
+		}
+		return c;
+				
+	}
+
 	
 
 }
