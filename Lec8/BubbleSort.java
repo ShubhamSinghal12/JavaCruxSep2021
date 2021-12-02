@@ -31,13 +31,13 @@ public class BubbleSort {
 				if(arr[j] > arr[j+1])
 				{
 					swap2(arr, j+1, j);
-					c++;
+//					c++;
 				}
 			}
-			if(c == 0)
-			{
-				break;
-			}
+//			if(c == 0)
+//			{
+//				break;
+//			}
 		}
 	}
 	
