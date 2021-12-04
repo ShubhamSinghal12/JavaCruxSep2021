@@ -4,7 +4,7 @@ public class SubStrings {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String st = "nitin";
+		String st = "nitinn";
 //		printAllSubStrings(st);
 		System.out.println(isPalindrome2(st));
 		System.out.println(countAllPalindromicSubStrings(st));
