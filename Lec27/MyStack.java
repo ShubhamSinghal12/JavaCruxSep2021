@@ -3,8 +3,8 @@ package Lec27;
 public class MyStack {
 	
 	
-	private int[] arr;
-	int top;
+	protected int[] arr;
+	protected int top;
 	
 	
 	public MyStack(int cap)
@@ -15,7 +15,7 @@ public class MyStack {
 	
 	public MyStack()
 	{
-		this(5);
+		this(5); // This has to be the first stmt
 	}
 	
 	

@@ -2,9 +2,9 @@ package Lec27;
 
 public class MyQueue {
 	
-	private int[] arr;
-	private int front;
-	private int size;
+	protected int[] arr;
+	protected int front;
+	protected int size;
 	
 	public MyQueue(int cap)
 	{
