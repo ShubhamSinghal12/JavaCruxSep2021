@@ -26,5 +26,4 @@ public class DynamicStack extends MyStack{
 		super.push(ele);
 	}
 	
-	
 }
