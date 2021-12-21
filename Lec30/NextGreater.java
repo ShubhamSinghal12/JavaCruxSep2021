@@ -16,8 +16,10 @@ public class NextGreater {
 	
 	public static int[] nextG(int[] arr)
 	{
+		
 		int[] ans = new int[arr.length];
 		Stack<Integer> st = new Stack<Integer>();
+		
 		for(int i = 0; i < arr.length; i++)
 		{
 			//1st
@@ -26,9 +28,11 @@ public class NextGreater {
 				int j = st.pop();
 				ans[j] = arr[i];
 			}
+			
 			//2nd
 			st.push(i);
 		}
+		
 		while(!st.isEmpty())
 		{
 			int j = st.pop();
