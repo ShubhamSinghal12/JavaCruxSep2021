@@ -226,6 +226,7 @@ public class MyLinkedList {
 	
 	public void reverse()
 	{
+		
 		Node prev = null;
 		Node curr = head;
 		while(curr != null)
@@ -237,7 +238,188 @@ public class MyLinkedList {
 			prev = curr;
 			curr = ahead;
 		}
-		head = prev; 
+		
+		head = prev;
+		
 	}
-
+	
+	
+	public void reverseR()
+	{
+		reverseR(null,head);
+	}
+	
+	private void reverseR(Node prev,Node cur)
+	{
+		if(cur == null)
+		{
+			head = prev;
+			return;
+		}
+		else
+		{
+			reverseR(cur, cur.next);
+			cur.next = prev;
+		}
+	}
+	
+	public void reverseOR()
+	{
+		Node temp = head;
+		reverseOR(head);
+		temp.next = null;
+	}
+	
+	private void reverseOR(Node prev)
+	{
+		if(prev.next == null)
+		{
+			head = prev;
+			return;
+		}
+		else
+		{
+			reverseOR(prev.next);
+			
+			prev.next.next = prev;
+		}
+	}
+	
+	
+	public void kreverse(int k)
+	{
+		head = kreverse(head, k);
+	}
+	
+	private Node kreverse(Node h,int k)
+	{
+		if(h == null)
+			return null;
+		
+		int t = k;
+		Node temp = h;
+		
+		while(t > 0 && temp != null)
+		{
+			temp = temp.next;
+			t--;
+		}
+		
+		Node prev = kreverse(temp, k);
+		Node curr = h;
+		
+		while(curr != temp)
+		{
+			Node ahead = curr.next;
+			
+			curr.next = prev;
+			
+			prev = curr;
+			curr = ahead;
+		}
+		
+		return prev;
+		
+	}
+	
+	public int midValue()
+	{
+		Node slow = head;
+		Node fast = head;
+		
+		while(fast.next != null && fast.next.next != null)
+		{
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		return slow.data;
+		
+	}
+	
+	
+	private Node midNode()
+	{
+		Node slow = head;
+		Node fast = head;
+		
+		while(fast.next != null && fast.next.next != null)
+		{
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		return slow;
+		
+	}
+	
+	public static MyLinkedList merge(MyLinkedList l1, MyLinkedList l2)
+	{
+		MyLinkedList l3 = new MyLinkedList();
+		Node i = l1.head;
+		Node j = l2.head;
+		
+		while(i != null && j != null)
+		{
+			if(i.data <= j.data)
+			{
+				l3.addLast(i.data);
+				i = i.next;
+			}
+			else
+			{
+				l3.addLast(j.data);
+				j = j.next;
+			}
+		}
+		
+		while(i!=null)
+		{
+			l3.addLast(i.data);
+			i = i.next;
+		}
+		while(j!=null)
+		{
+			l3.addLast(j.data);
+			j = j.next;
+		}
+		
+		return l3;
+	}
+	
+	
+	public void mergeSort()
+	{
+		MyLinkedList l = this.mergeSortHelper();
+		this.head = l.head;
+	}
+	
+	private MyLinkedList mergeSortHelper()
+	{
+		if(size() == 1)
+		{
+			MyLinkedList l = new MyLinkedList();
+			l.head = this.head;
+			return l;
+		}
+		else
+		{
+//			display();
+			Node mid = midNode();
+			MyLinkedList l1 = new MyLinkedList();
+			MyLinkedList l2 = new MyLinkedList();
+			
+			l2.head = mid.next;
+			mid.next = null;
+			l1.head = this.head;
+			
+			MyLinkedList fh = l1.mergeSortHelper();
+			MyLinkedList lh = l2.mergeSortHelper();
+			
+			return merge(fh, lh);
+		}
+		
+	}
+	
+	
+	
+	
 }
