@@ -37,15 +37,21 @@ public class Client {
 //		l3.display();
 
 		
-		MyLinkedList l1 = new MyLinkedList();
-		for(int i = 5; i > 0; i--)
-		{
-			l1.addLast(i);
-		}
+//		MyLinkedList l1 = new MyLinkedList();
+//		for(int i = 5; i > 0; i--)
+//		{
+//			l1.addLast(i);
+//		}
+//		
+//		l1.display();
+//		l1.mergeSort();
+//		l1.display();
 		
-		l1.display();
-		l1.mergeSort();
-		l1.display();
+		
+		MyLinkedList ll = new MyLinkedList();
+		ll.dummyListForIntersection();
+		ll.dummyListForCycle();
+		ll.display();
 	}
 	
 	

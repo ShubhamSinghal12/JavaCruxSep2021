@@ -420,6 +420,144 @@ public class MyLinkedList {
 	}
 	
 	
+	public void dummyListForIntersection()
+	{
+		Node n1 = new Node(1);
+		Node n2 = new Node(2);
+		Node n3 = new Node(3);
+		Node n4 = new Node(4);
+		Node n5 = new Node(5);
+		Node n6 = new Node(6);
+		Node n7 = new Node(7);
+		Node n8 = new Node(8);
+		Node n9 = new Node(9);
+		Node n10 = new Node(10);
+		Node n11 = new Node(11);
+		Node n12 = new Node(12);
+		Node n13 = new Node(13);
+		
+		n1.next = n2;
+		n2.next = n3;
+		n3.next = n4;
+		n4.next = n5;
+		n5.next = n6;
+		n6.next = n7;
+		n7.next = n8;
+		n8.next = n9;
+		n9.next = n10;
+		
+		n11.next = n12;
+		n12.next = n13;
+		n13.next = n7;
+		
+		Node h1 = n1;
+		Node h2 = n11;
+		
+		intersection(h1, h2);
+				
+	}
+	
+	private void intersection(Node head1, Node head2)
+    {
+        Node s1 = head1;
+        Node s2 = head2;
+        while(s1 != s2)
+        {
+            if(s1.next == null)
+            {
+                s1 = head2;
+            }
+            if(s2.next == null)
+            {
+                s2 = head1;
+            }
+            
+            s1 = s1.next;
+            s2 = s2.next;
+        }
+        System.out.println(s1.data + " "+ s2.data);
+    }
+	
+	
+	public void dummyListForCycle()
+	{
+		Node n1 = new Node(1);
+		Node n2 = new Node(2);
+		Node n3 = new Node(3);
+		Node n4 = new Node(4);
+		Node n5 = new Node(5);
+		Node n6 = new Node(6);
+		Node n7 = new Node(7);
+		Node n8 = new Node(8);
+		
+		n1.next = n2;
+		n2.next = n3;
+		n3.next = n4;
+		n4.next = n5;
+		n5.next = n6;
+		n6.next = n7;
+		n7.next = n8;
+		
+		n8.next = n3;
+		
+		Node h = n1;
+		this.head = h;
+		CycleDetectionRemoval(h);
+		
+	}
+	
+	
+	private void CycleDetectionRemoval(Node head)
+	{
+		Node fast = head;
+		Node slow = head;
+		
+		while(fast != null && fast.next != null)
+		{
+			slow = slow.next;
+			fast = fast.next.next;
+			
+			if(slow == fast)
+			{
+				break;
+			}
+		}
+		
+		
+//		Node temp = slow;
+//		int count  = 1;
+//		while (temp.next != slow)
+//		{
+//			temp = temp.next;
+//			count++;
+//		}
+//		
+//		System.out.println(count);
+		
+		Node s1 = slow;
+		Node s2 = head;
+		
+//		while(count > 0)
+//		{
+//			s1 = s1.next;
+//			count--;
+//		}
+//		
+//		System.out.println(s1.data);
+		
+		while(s1.next != s2.next)
+		{
+			s1 = s1.next;
+			s2 = s2.next;
+		}
+		
+		System.out.println(s1.data + " "+ s2.data);
+		
+		s1.next = null;
+		
+	}
+	
+	
 	
 	
 }
