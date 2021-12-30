@@ -7,6 +7,9 @@ public class Client {
 		
 		//10 true 20 true 400 false true 70 false false true 50 false false true 30 true 60 false false false
 		
+		//10 true 20 true 40 false true 70 false false false true 30 true 60 false false false
+		
+		
 		BinaryTree bt = new BinaryTree();
 		bt.createTree();
 		bt.display();
@@ -18,8 +21,11 @@ public class Client {
 		System.out.println(bt.ht());
 		
 		System.out.println("---------------------------");
-		bt.postorder();
+//		bt.postorder();
+		bt.levelbylevelOrder2();
 		System.out.println();
+		System.out.println("---------------------------");
+		System.out.println(bt.isBal2());
 		
 		
 

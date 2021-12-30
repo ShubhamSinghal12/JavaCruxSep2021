@@ -1,5 +1,7 @@
 package Lec35;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class BinaryTree {
@@ -234,6 +236,141 @@ public class BinaryTree {
 			postorder(n.right);
 			
 			System.out.print(n.data +" ");
+		}
+	}
+	
+	
+	public void levelOrder()
+	{
+		Queue<Node> qt = new LinkedList<>();
+		qt.add(root);
+		
+		while(!qt.isEmpty())
+		{
+			Node n = qt.remove();
+			System.out.print(n.data+" ");
+			if(n.left!= null)
+			{
+				qt.add(n.left);
+			}
+			if(n.right != null)
+			{
+				qt.add(n.right);
+			}
+			
+			System.out.println();
+		}
+		System.out.println();
+	}
+	
+	public void levelbylevelOrder()
+	{
+		Queue<Node> qt = new LinkedList<>();
+		qt.add(root);
+		qt.add(null);
+		
+		while(qt.size() != 1)
+		{
+			Node n = qt.remove();
+			if(n == null)
+			{
+				System.out.println();
+				qt.add(null);
+			}
+			else
+			{
+				System.out.print(n.data+" ");
+				if(n.left!= null)
+				{
+					qt.add(n.left);
+				}
+				if(n.right != null)
+				{
+					qt.add(n.right);
+				}
+			}
+		}
+		System.out.println();
+	}
+	public void levelbylevelOrder2()
+	{
+		Queue<Node> qt = new LinkedList<>();
+		Queue<Node> temp = new LinkedList<>();
+		qt.add(root);
+		
+		while(qt.size() != 0)
+		{
+			Node n = qt.remove();
+			System.out.print(n.data+" ");
+			if(n.left!= null)
+			{
+				temp.add(n.left);
+			}
+			if(n.right != null)
+			{
+				temp.add(n.right);
+			}
+			
+			if(qt.isEmpty())
+			{
+				System.out.println();
+				qt = temp;
+				temp = new LinkedList<>();
+			}
+		}
+		System.out.println();
+	}
+	
+	
+	public boolean isBal()
+	{
+		return isBal(root);
+	}
+	
+	private boolean isBal(Node n)
+	{
+		if(n == null)
+		{
+			return true;
+		}
+		else
+		{
+			boolean b1 = false;
+			if(Math.abs(ht(n.left) - ht(n.right)) <= 1)
+				b1 = true;
+			
+			return b1 && isBal(n.left) && isBal(n.right);
+			
+		}
+	}
+	
+	
+	private class BalPair{
+		boolean isBal = true;
+		int ht = -1;
+	}
+	
+	public boolean isBal2()
+	{
+		return isBal2(root).isBal;
+	}
+	private BalPair isBal2(Node n)
+	{
+		if(n == null)
+		{
+			return new BalPair();
+		}
+		else
+		{
+			BalPair b2 = isBal2(n.left);
+			BalPair b3 = isBal2(n.right);
+			
+			BalPair b1 = new BalPair();
+			b1.isBal = b2.isBal && b3.isBal && Math.abs(b2.ht - b3.ht) <= 1;
+			
+			b1.ht = Math.max(b2.ht, b3.ht) + 1;
+			return b1;
+			
 		}
 	}
 
