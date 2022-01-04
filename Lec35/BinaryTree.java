@@ -354,6 +354,7 @@ public class BinaryTree {
 	{
 		return isBal2(root).isBal;
 	}
+	
 	private BalPair isBal2(Node n)
 	{
 		if(n == null)
