@@ -4,6 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+import org.w3c.dom.Node;
+
+
 
 public class BinaryTree2 {
 	
@@ -229,5 +232,167 @@ Scanner sc = new Scanner(System.in);
 			display(n.right);
 		}
 	}
+	
+	//Lecture 40 isBST
+	
+	public boolean isBST1()
+	{
+		return isBST1(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+	}
+	
+	private boolean isBST1(Node n,int a,int b)
+	{
+		if(n == null)
+		{
+			return true;
+		}
+		else
+		{
+			if(n.data < a || n.data > b)
+				return false;
+			else
+			{
+				return isBST1(n.left,a,n.data) && isBST1(n.right,n.data,b);
+			}
+		}
+	}
+	public int max()
+	{
+		return max(root);
+	}
+	
+	private int max(Node n)
+	{
+		if(n == null)
+		{
+			return Integer.MIN_VALUE;
+		}
+		else
+		{
+			int lmax = max(n.left);
+			int rmax = max(n.right);
+			return Math.max(lmax, Math.max(n.data, rmax));
+		}
+	}
+	
+	public int min()
+	{
+		return min(root);
+	}
+	
+	private int min(Node n)
+	{
+		if(n == null)
+		{
+			return Integer.MAX_VALUE;
+		}
+		else
+		{
+			int lmin = min(n.left);
+			int rmin = min(n.right);
+			return Math.min(lmin, Math.min(n.data, rmin));
+		}
+	}
+	public boolean isBST2()
+	{
+		return isBST2(root);
+	}
+	
+	private boolean isBST2(Node n)
+	{
+		if(n == null)
+			return true;
+		else
+		{
+			if(n.data < max(n.left) || n.data > min(n.right))
+			{
+				return false;
+			}
+			else
+			{
+				return isBST2(n.left)&&isBST2(n.right);
+			}
+		}
+	}
+	
+	private class isBSTPair{
+		boolean isBST = true;
+		int max = Integer.MIN_VALUE;
+		int min = Integer.MAX_VALUE;
+		
+		int size = 0;
+		int maxBSTSize = 0;
+		Node r = null;
+	}
+	
+	public boolean isBST3()
+	{
+		return isBST3(root).isBST;
+	}
+	
+	private isBSTPair isBST3(Node n)
+	{
+		if(n == null)
+			return new isBSTPair();
+		else
+		{
+			isBSTPair lst = isBST3(n.left);
+			isBSTPair rst = isBST3(n.right);
+			isBSTPair cur = new isBSTPair();
+			
+			cur.isBST = lst.isBST && rst.isBST && n.data >= lst.max && n.data <= rst.min ;
+			cur.min = Math.min(n.data, Math.min(lst.min, rst.min));
+			cur.max = Math.max(n.data, Math.max(lst.max, rst.max));
+			
+			return cur;
+		}
+	}
+	
+	public int maxBST()
+	{
+		isBSTPair p = maxBST(root);
+		display(p.r);
+		return p.maxBSTSize;
+	}
+	
+	private isBSTPair maxBST(Node n)
+	{
+		if(n == null)
+			return new isBSTPair();
+		else
+		{
+			isBSTPair lst = maxBST(n.left);
+			isBSTPair rst = maxBST(n.right);
+			isBSTPair cur = new isBSTPair();
+			
+			cur.isBST = lst.isBST && rst.isBST && n.data >= lst.max && n.data <= rst.min ;
+			cur.min = Math.min(n.data, Math.min(lst.min, rst.min));
+			cur.max = Math.max(n.data, Math.max(lst.max, rst.max));
+			
+			cur.size = lst.size + rst.size + 1;
+			
+			if(cur.isBST)
+			{
+				cur.maxBSTSize = cur.size;
+				cur.r = n;
+			}
+			else
+			{
+				if(lst.maxBSTSize>rst.maxBSTSize)
+				{
+					cur.maxBSTSize = lst.maxBSTSize;
+					cur.r = lst.r;
+				}
+				else
+				{
+					cur.maxBSTSize = rst.maxBSTSize;
+					cur.r = rst.r;
+				}
+			}
+			
+			return cur;
+		}
+	}
+	
 
 }

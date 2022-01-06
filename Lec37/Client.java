@@ -16,12 +16,14 @@ public class Client {
 		
 		bt.createTreeUsingLevelOrder();
 		bt.display();
-		System.out.println(bt.dia2());
+//		System.out.println(bt.dia2());
+//		
+//		System.out.println("--------------------------");
+//		bt.leftTreeView();
 		
 		System.out.println("--------------------------");
-		bt.leftTreeView();
-		System.out.println("--------------------------");
-		bt.leftTreeView();
+		//140 20 160 10 30 50 80 -1 -1 -1 -1 -1 -1 -1 -1
+		System.out.println(bt.maxBST());
 
 	}
 

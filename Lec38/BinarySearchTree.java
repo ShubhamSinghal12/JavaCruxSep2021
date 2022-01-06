@@ -1,6 +1,7 @@
 package Lec38;
 
 
+
 public class BinarySearchTree {
 	
 private class Node{
@@ -224,6 +225,7 @@ private class Node{
 			return rws(n.left,sum);
 		}
 	}
+	
 	public void display()
 	{
 		display(root);
@@ -251,6 +253,35 @@ private class Node{
 			System.out.println(s);
 			display(n.left);
 			display(n.right);
+		}
+	}
+	
+	
+	public void pir(int a,int b)
+	{
+		pir(root,a,b);
+	}
+	
+	private void pir(Node n,int a,int b)
+	{
+		if(n == null)
+		{
+			return;
+		}
+		else
+		{			
+			if(n.data >= a)
+			{
+				pir(n.left,a,b);
+			}
+			
+			if(n.data >= a && n.data <= b)
+				System.out.print(n.data +" ");
+			
+			if(n.data <= b)
+			{
+				pir(n.right,a,b);
+			}
 		}
 	}
 
