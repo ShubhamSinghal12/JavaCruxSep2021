@@ -1,5 +1,9 @@
 package Lec35;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -374,5 +378,97 @@ public class BinaryTree {
 			
 		}
 	}
+	
+	
+	
+	public void verticalOrder()
+	{
+		HashMap<Integer,ArrayList<Integer>> map = new HashMap<>();
+		verticalOrder(root, 0, map);
+		
+		ArrayList<Integer> al = new ArrayList<>(map.keySet());
+		Collections.sort(al);
+		
+		for(int val:al)
+		{
+			System.out.println(map.get(val));
+		}
+	}
+	
+	private void verticalOrder(Node n,int vlvl, HashMap<Integer, ArrayList<Integer>> map)
+	{
+		if(n == null)
+		{
+			return;
+		}
+		else
+		{
+			verticalOrder(n.left, vlvl-1, map);
+			verticalOrder(n.right, vlvl+1, map);
+			
+			if(map.containsKey(vlvl))
+			{
+				map.get(vlvl).add(n.data);
+			}
+			else
+			{
+				map.put(vlvl, new ArrayList<Integer>(Arrays.asList(n.data)));
+			}
+			
+		}
+	}
+	
+	private class TopPair{
+		int val;
+		int lvl;
+		TopPair()
+		{
+			
+		}
+		TopPair(int v,int l)
+		{
+			val = v;
+			lvl = l;
+		}
+	}
+	public void TopView()
+	{
+		HashMap<Integer,TopPair> map = new HashMap<>();
+		TopView(root, 0, 0,map);
+		
+		ArrayList<Integer> al = new ArrayList<>(map.keySet());
+		Collections.sort(al);
+		
+		for(int val:al)
+		{
+			System.out.print(map.get(val).val+" ");
+		}
+		System.out.println();
+	}
+	
+	private void TopView(Node n,int vlvl, int lvl,HashMap<Integer, TopPair> map)
+	{
+		if(n == null)
+		{
+			return;
+		}
+		else
+		{
+			
+			TopView(n.left, vlvl-1,lvl+1, map);
+			TopView(n.right, vlvl+1,lvl+1,map);
+			
+			if(map.containsKey(vlvl) && lvl < map.get(vlvl).lvl)
+			{
+				map.put(vlvl, new TopPair(n.data,lvl));
+			}
+			else
+			{
+				map.put(vlvl, new TopPair(n.data,lvl));
+			}
+			
+		}
+	}
+	
 
 }

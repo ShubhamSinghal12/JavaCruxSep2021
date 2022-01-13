@@ -27,6 +27,10 @@ public class Client {
 		System.out.println("---------------------------");
 		System.out.println(bt.isBal2());
 		
+		System.out.println("---------------------------");
+		bt.TopView();
+		
+		
 		
 
 	}

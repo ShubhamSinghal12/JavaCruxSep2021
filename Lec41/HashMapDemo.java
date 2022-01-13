@@ -68,6 +68,8 @@ public class HashMapDemo {
 		lmap.put(null, 10);
 		
 		System.out.println(lmap);
+		
+		
 
 
 	}
