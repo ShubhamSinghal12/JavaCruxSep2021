@@ -1,6 +1,6 @@
 package Lec40;
 
-public class Car{// implements Comparable<Car>{
+public class Car implements Comparable<Car>{
 	
 	int price;
 	int speed;
@@ -41,10 +41,10 @@ public class Car{// implements Comparable<Car>{
 //			return 0;
 //		}
 		
-//		return o.price - this.price;
+		return o.price - this.price;
 //		return this.speed - o.speed;
 		
-		return this.color.compareTo(o.color);
+//		return this.color.compareTo(o.color);
 	}
 
 }
