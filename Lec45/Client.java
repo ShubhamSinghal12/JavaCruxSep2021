@@ -7,7 +7,7 @@ public class Client {
 		
 		Graph gh = new Graph(7);
 		
-		gh.addEdge(1, 2, 60);
+		gh.addEdge(1, 2, 65);
 		gh.addEdge(1, 3, 10);
 		gh.addEdge(4, 2, 30);
 		gh.addEdge(3, 4, 20);
@@ -18,9 +18,9 @@ public class Client {
 		
 		gh.display();
 		
-		System.out.println(gh.noOfEdges());
-		System.out.println(gh.noOfVertices());
-		gh.removeEdge(2, 5);
+//		System.out.println(gh.noOfEdges());
+//		System.out.println(gh.noOfVertices());
+//		gh.removeEdge(2, 5);
 //		gh.removeEdge(3, 4);
 //		gh.removeEdge(7, 6);
 //		gh.removeVertex(2);
@@ -31,8 +31,12 @@ public class Client {
 //		gh.BFST();
 //		System.out.println(gh.isCycle());
 //		System.out.println(gh.noOfConnectedComponents());
-		System.out.println(gh.allConnectedComponents());
+//		System.out.println(gh.allConnectedComponents());
 //		gh.display();
+		
+//		gh.krushkal();
+//		gh.Prims();
+		gh.Dijakstra();
 		
 		
 		
