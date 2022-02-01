@@ -1,6 +1,7 @@
 package Lec45;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -26,7 +27,7 @@ public class Graph {
 	public void addEdge(int u,int v,int cost)
 	{
 		map.get(u).put(v, cost);
-		map.get(v).put(u, cost);
+//		map.get(v).put(u, cost);
 	}
 	
 	public void addVertex(int u)
@@ -619,12 +620,42 @@ public class Graph {
 				}
 			}
 			
-		}
-		
+		}	
 	}
 	
 	
-	
+	public void bellmonFord(int source)
+	{
+		int nv = map.size();
+		int dis[] = new int[nv+1];
+		Arrays.fill(dis, 100000);
+		dis[source] = 0;
+		
+		ArrayList<EdgePair> al = allEdges();
+		
+		for(int i = 1; i <= nv; i++)
+		{
+			for(EdgePair edge: al)
+			{
+				int old = dis[edge.v];
+				int nd = dis[edge.u] + edge.cost;
+				if(nd < old)
+				{
+					if(i == nv)
+					{
+						System.out.println("Negative Weight Cycle");
+						return;
+					}
+					dis[edge.v] = nd;
+				}
+			}
+		}
+		
+		for(int i = 1;i < dis.length; i++)
+		{
+			System.out.println(i+" --> "+dis[i]);
+		}
+	}
 	
 
 }
