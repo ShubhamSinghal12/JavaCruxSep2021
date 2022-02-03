@@ -14,7 +14,7 @@ public class LIS {
 		Arrays.fill(dp, -1);
 		for(int i = 0; i < arr.length; i++)
 		{
-			max = Math.max(max,LISTD(arr, i, dp));
+			max = Math.max(max,LIS(arr, i,""));
 		}
 		System.out.println(max);
 		System.out.println(LISBU(arr));
@@ -25,6 +25,7 @@ public class LIS {
 		if(i == arr.length)
 		{
 			System.out.println(ans);
+			System.out.println("1234");
 			return 0;
 		}
 		else
